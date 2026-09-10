@@ -3,7 +3,6 @@
  *
  * [7] Reverse Integer
  */
-
 // @lc code=start
 class Solution {
 public:
