@@ -1,0 +1,49 @@
+/*
+ * @lc app=leetcode id=1352 lang=cpp
+ *
+ * [1352] Product of the Last K Numbers
+ */
+
+// @lc code=start
+class ProductOfNumbers
+{
+private:
+    vector<int> prefix = {1};
+
+public:
+    ProductOfNumbers()
+    {
+        prefix.push_back(1);
+    }
+
+    void add(int num)
+    {
+        if (num == 0)
+        {
+            prefix.clear();
+            prefix.push_back(1);
+        }
+        else
+        {
+            prefix.push_back(prefix.back() * num);
+        }
+    }
+
+    int getProduct(int k)
+    {
+        if (k >= prefix.size())
+        {
+            return 0;
+        }
+        int n = prefix.size();
+        return prefix[n - 1] / prefix[n - k - 1];
+    }
+};
+
+/**
+ * Your ProductOfNumbers object will be instantiated and called as such:
+ * ProductOfNumbers* obj = new ProductOfNumbers();
+ * obj->add(num);
+ * int param_2 = obj->getProduct(k);
+ */
+// @lc code=end
